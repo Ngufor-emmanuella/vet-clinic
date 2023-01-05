@@ -11,4 +11,4 @@ CREATE TABLE animals (
 
 -- add a column to the table
 ALTER TABLE animals
-ADD COLUMN specie VARCHAR(100);
+ADD COLUMN species VARCHAR(100);
