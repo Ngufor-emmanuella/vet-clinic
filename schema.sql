@@ -55,6 +55,8 @@ CREATE TABLE visits (
     PRIMARY KEY (animals_id, vets_id, visit_date)
 );
 
+SELECT * FROM visits;
+
 -- delete columns in specializations table
 ALTER TABLE specializations DROP COLUMN species_id;
 ALTER TABLE specializations DROP COLUMN vets_id;
