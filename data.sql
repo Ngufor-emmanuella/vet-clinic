@@ -36,3 +36,119 @@ UPDATE animals SET owner_id = (SELECT id FROM owners WHERE full_name = 'Jennifer
 UPDATE animals SET owner_id = (SELECT id FROM owners WHERE full_name = 'Bob') WHERE name in ('Devimon', 'Plantmon');
 UPDATE animals SET owner_id = (SELECT id FROM owners WHERE full_name = 'Melody Pond') WHERE name in ('Charmander', 'Squirtle', 'Blossom');
 UPDATE animals SET owner_id = (SELECT id FROM owners WHERE full_name = 'Dean Winchester') WHERE name in ('Angemon', 'Boarmon');
+
+-- project for add join table
+INSERT INTO vets (name, age, date_of_graduation) values ('Vet William Tatcher', 45, date '2000-04-23');
+INSERT INTO vets ( name, age, date_of_graduation) VALUES('Maisy Smith', 26, date '2019-01-17');
+INSERT INTO vets ( name, age, date_of_graduation) VALUES('Stephanie Mendez', 64, date '1981-05-04');
+INSERT INTO vets ( name, age, date_of_graduation) VALUES('Jack Harkness', 38, date '2008-06-08');
+INSERT INTO specializations (species_id, vets_id) VALUES ((SELECT id FROM species WHERE name = 'Pokemon'), (SELECT id FROM vets WHERE name = 'William Tatcher'));
+INSERT INTO specializations (species_id, vets_id)
+VALUES (
+        (
+            SELECT id
+            FROM species
+            WHERE name = 'Digimon'
+        ),
+        (
+            SELECT id
+            FROM vets
+            WHERE name = 'Stephanie Mendez'
+        )
+    ),
+    (
+        (
+            SELECT id
+            FROM species
+            WHERE name = 'Pokemon'
+        ),
+        (
+            SELECT id
+            FROM vets
+            WHERE name = 'Stephanie Mendez'
+        )
+    );
+
+    INSERT INTO specializations (species_id, vets_id)
+VALUES (
+        (
+            SELECT id
+            FROM species
+            WHERE name = 'Digimon'
+        ),
+        (
+            SELECT id
+            FROM vets
+            WHERE name = 'Jack Harkness'
+        )
+    );
+    
+
+    INSERT INTO
+    visits(animal_id, vets_id, visit_date)
+VALUES
+    (
+        (
+            SELECT
+                id
+            FROM
+                animals
+            WHERE
+                name = 'Agumon'
+        ),
+        (
+            SELECT
+                id
+            FROM
+                vets
+            WHERE
+                name = ' William Tatcher'
+        ),
+        '2020-05-24'
+    );
+
+    INSERT INTO
+    visits(animal_id, vets_id, visit_date)
+VALUES
+    (
+        (
+            SELECT
+                id
+            FROM
+                animals
+            WHERE
+                name = 'Agumon'
+        ),
+        (
+            SELECT
+                id
+            FROM
+                vets
+            WHERE
+                name = 'Stephanie Mendez'
+        ),
+        '2020-07-22'
+    );
+
+    INSERT INTO
+    visits(animal_id, vets_id, visit_date)
+VALUES
+    (
+        (
+            SELECT
+                id
+            FROM
+                animals
+            WHERE
+                name = 'Gabumon'
+        ),
+        (
+            SELECT
+                id
+            FROM
+                vets
+            WHERE
+                name = 'Jack Harkness'
+        ),
+        '2021-02-02'
+    );
