@@ -43,14 +43,26 @@ CREATE TABLE vets (
 );
 
 CREATE TABLE specializations (
-    species_id INT,
-    vets_id INT,
-    PRIMARY KEY(species_id, vet_id)
+    vets_id INT REFERENCES vets (id),
+    species_id INT REFERENCES species (id),
+    PRIMARY KEY (vets_id, species_id)
 );
 
 CREATE TABLE visits (
-    animal_id INT,
-    vets_id INT,
-    visit_date DATE,
-    PRIMARY KEY(animal_id, vet_id, visit_date)
+    animals_id INT REFERENCES animals(id),
+    vets_id INT REFERENCES vets(id),
+    visit_date date,
+    PRIMARY KEY (animals_id, vets_id, visit_date)
 );
+
+-- delete columns in specializations table
+ALTER TABLE specializations DROP COLUMN species_id;
+ALTER TABLE specializations DROP COLUMN vets_id;
+ALTER TABLE specializations ADD COLUMN species_id INT REFERENCES vets (id);
+ALTER TABLE specializations DROP COLUMN species_id;
+SELECT * FROM specializations;
+ALTER TABLE specializations ADD COLUMN vets_id INT REFERENCES vets (id);
+ALTER TABLE specializations ADD COLUMN species_id INT REFERENCES species (id);
+DROP TABLE specializations;
+DROP TABLE visits;
+-- go back to line 45 and 53 and add create tables all over respectively

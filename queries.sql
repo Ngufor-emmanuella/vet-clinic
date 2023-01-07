@@ -66,3 +66,27 @@ SELECT a.name FROM animals a JOIN owners o ON a.owner_id = o.id WHERE a.escape_a
 SELECT combined.full_name FROM (SELECT o.full_name, COUNT (a.name) AS animal_number FROM owners o LEFT JOIN animals a ON o.id = a.owner_id
 GROUP BY o.full_name) AS combined WHERE combined.animal_number = (SELECT MAX (animal_number)FROM (SELECT o.full_name,COUNT (a.name) AS
 animal_number FROM owners o LEFT JOIN animals a ON o.id = a.owner_id GROUP BY o.full_name) AS xx);
+
+
+-- code for join tables
+
+-- Write queries to answer the following:
+-- Who was the last animal seen by William Tatcher?
+SELECT animals.name AS last_animal_seen_by_William_Tatcher
+FROM animals 
+JOIN visits ON animals.id = visits.animals_id 
+JOIN vets ON visits.vets_id = vets.id 
+WHERE vets.name='William Tatcher' 
+ORDER BY visits.visit_date DESC LIMIT 1;
+
+-- How many different animals did Stephanie Mendez see?
+SELECT COUNT(*) AS no_of_different_animals_seen_by_Stephanie_Mendez  
+FROM (SELECT DISTINCT animals.name FROM animals 
+JOIN visits ON animals.id = visits.animals_id JOIN vets ON visits.vets_id = vets.id 
+WHERE vets.name='Stephanie Mendez') AS foo;
+
+-- List all vets and their specialties, including vets with no specialties.
+SELECT vets.name AS vet_names, species.name AS vet_specialities
+FROM vets 
+FULL JOIN specializations ON vets.id = specializations.vets_id FULL 
+JOIN species ON specializations.species_id = species.id;
