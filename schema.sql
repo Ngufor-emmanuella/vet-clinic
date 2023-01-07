@@ -66,3 +66,4 @@ ALTER TABLE specializations ADD COLUMN species_id INT REFERENCES species (id);
 DROP TABLE specializations;
 DROP TABLE visits;
 -- go back to line 45 and 53 and add create tables all over respectively
+-- go back to line 46 and 54 and add create tables all over respectively
