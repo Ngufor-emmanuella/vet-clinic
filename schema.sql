@@ -45,14 +45,12 @@ CREATE TABLE vets (
 CREATE TABLE specializations (
     vets_id INT REFERENCES vets (id),
     species_id INT REFERENCES species (id),
-    PRIMARY KEY (vets_id, species_id)
 );
 
 CREATE TABLE visits (
     animals_id INT REFERENCES animals(id),
     vets_id INT REFERENCES vets(id),
     visit_date date,
-    PRIMARY KEY (animals_id, vets_id, visit_date)
 );
 
 SELECT * FROM visits;
