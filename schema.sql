@@ -32,3 +32,44 @@ CREATE TABLE species (
 ALTER TABLE animals DROP COLUMN species;
 ALTER TABLE animals ADD COLUMN species_id INT CONSTRAINT species_fk REFERENCES species (id);
 ALTER TABLE animals ADD COLUMN owner_id INT CONSTRAINT owner_fk REFERENCES owners (id);
+
+-- project for add join tables
+CREATE TABLE vets (
+    id  INT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR(70),
+    age INT,
+    date_of_graduation DATE,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE specializations (
+    vets_id INT REFERENCES vets (id),
+    species_id INT REFERENCES species (id),
+);
+
+CREATE TABLE visits (
+    animals_id INT REFERENCES animals(id),
+    vets_id INT REFERENCES vets(id),
+    visit_date date,
+);
+
+SELECT * FROM visits;
+
+-- delete columns in specializations table
+ALTER TABLE specializations DROP COLUMN species_id;
+ALTER TABLE specializations DROP COLUMN vets_id;
+ALTER TABLE specializations ADD COLUMN species_id INT REFERENCES vets (id);
+ALTER TABLE specializations DROP COLUMN species_id;
+SELECT * FROM specializations;
+ALTER TABLE specializations ADD COLUMN vets_id INT REFERENCES vets (id);
+ALTER TABLE specializations ADD COLUMN species_id INT REFERENCES species (id);
+DROP TABLE specializations;
+DROP TABLE visits;
+-- go back to line 45 and 53 and add create tables all over respectively
+
+
+-- to remove primary keys in specializations and visits tables
+ALTER TABLE specializations DROP CONSTRAINT specializations_pkey;
+-- the pkey above means primary key on specializations
+
+ALTER TABLE visits DROP CONSTRAINT visits_pkey;
