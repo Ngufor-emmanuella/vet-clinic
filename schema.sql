@@ -68,4 +68,10 @@ ALTER TABLE specializations ADD COLUMN species_id INT REFERENCES species (id);
 DROP TABLE specializations;
 DROP TABLE visits;
 -- go back to line 45 and 53 and add create tables all over respectively
--- go back to line 46 and 54 and add create tables all over respectively
+
+
+-- to remove primary keys in specializations and visits tables
+ALTER TABLE specializations DROP CONSTRAINT specializations_pkey;
+-- the pkey above means primary key on specializations
+
+ALTER TABLE visits DROP CONSTRAINT visits_pkey;
