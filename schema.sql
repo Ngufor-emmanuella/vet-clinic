@@ -111,3 +111,7 @@ SELECT FROM owners WHERE email='owner_18327@mail.com';
 -- after
 CREATE INDEX owners_email ON owners(email);
 EXPLAIN ANALYSE SELECT * FROM owners WHERE email ='owner_18327@mail.com';
+
+
+-- changes asked by reviewer
+explain analyze SELECT COUNT(*) FROM visits where animals_id = 4;
