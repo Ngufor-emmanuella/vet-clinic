@@ -104,4 +104,8 @@ CREATE INDEX visits_vets_id ON visits(vets_id);
 EXPLAIN ANALYSE SELECT * FROM visits WHERE animals_id = 2;
 
 -- Querie :SELECT * FROM owners where email = 'owner_18327@mail.com';Before 
+EXPLAIN ANALYSE SELECT * FROM owners WHERE email ='owner_18327@mail.com';
+SELECT FROM owners WHERE email='owner_18327@mail.com';
 
+CREATE INDEX owners_email ON owners(email);
+EXPLAIN ANALYSE SELECT * FROM owners WHERE email ='owner_18327@mail.com';
