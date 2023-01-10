@@ -63,11 +63,17 @@ Clone this repository to your desired folder:
 
 ## 👥 Author <a name="authors"></a>
 
-👤 **Ayodeji Abidemi**
+👤 **Ngufor Emmanuella**
 
 - GitHub: [@githubhandle](https://github.com/Ngufor-emmanuella)
 - Twitter: [@twitterhandle](https://twitter.com/Ngufor-emmanuella)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/Ngufor-emmanuella/)
+
+👤 **Nowembabazi Nickson**
+
+- GitHub: [@githubhandle](https://github.com/Nowembabazi)
+- Twitter: [@twitterhandle](https://twitter.com/NowembabaziN)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/nowembabazi-nickson/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
